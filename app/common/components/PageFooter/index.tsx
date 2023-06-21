@@ -6,7 +6,7 @@ function PageFooter() {
 
   return (
     <footer role="contentinfo" className={classes.root}>
-      {'&copy;'} some guy
+      &copy; some guy
     </footer>
   );
 }

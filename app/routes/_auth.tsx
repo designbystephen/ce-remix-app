@@ -2,11 +2,12 @@ import React from 'react';
 import { Outlet } from '@remix-run/react';
 import Document from '~/common/components/Document';
 import SplitHeroPage from '~/common/components/SplitHeroPage';
+import AuthIcon from '~/common/components/AuthIcon';
 
 function Auth() {
   return (
     <Document>
-      <SplitHeroPage title="My Company">
+      <SplitHeroPage title="My Company" hero={<AuthIcon />}>
         <Outlet />
       </SplitHeroPage>
     </Document>

@@ -7,12 +7,13 @@ import useStyles from './styles';
 type SplitHeroPageProps = {
   title: string;
   children: ReactNode;
+  hero: ReactNode;
 };
 
 /**
  * Layout component for a split "hero" page with media taking up half of the screen and content on the other half
  */
-function SplitHeroPage({ title, children }: SplitHeroPageProps) {
+function SplitHeroPage({ title, children, hero }: SplitHeroPageProps) {
   const classes = useStyles();
 
   return (
@@ -24,7 +25,7 @@ function SplitHeroPage({ title, children }: SplitHeroPageProps) {
 
         <PageFooter />
       </main>
-      <aside className={classes.hero}>Other content here</aside>
+      <aside className={classes.hero}>{hero}</aside>
     </div>
   );
 }

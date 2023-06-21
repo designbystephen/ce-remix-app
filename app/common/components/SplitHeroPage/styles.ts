@@ -9,6 +9,10 @@ export default createUseStyles({
 
   content: {
     // TODO: vertical alignment
+    display: 'flex',
+    // alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     backgroundColor: '#fff',
     width: '50%',
     padding: '24px',
@@ -16,12 +20,17 @@ export default createUseStyles({
   },
 
   hero: {
-    // TODO: vertical alignment
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#dfe6e9',
     width: '50%',
     padding: '24px',
     flexGrow: 1,
   },
 
-  innerContent: {},
+  innerContent: {
+    marginTop: '24px',
+    marginBottom: '24px',
+  },
 });
