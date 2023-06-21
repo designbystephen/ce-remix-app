@@ -1,4 +1,5 @@
 import React from 'react';
+import TextField from '@mui/material/TextField';
 
 type CreateUserProps = {
   // optional props to ease the process of creating users from other sources
@@ -18,11 +19,35 @@ type CreateUserProps = {
 function CreateUser({ firstName, lastName, email }: CreateUserProps) {
   return (
     <div>
-      <p>
-        <input name="firstName" defaultValue={firstName} />
-        <input name="lastName" defaultValue={lastName} />
-        <input name="email" defaultValue={email} />
-      </p>
+      <div>
+        <TextField
+          id="FirstNameInput"
+          name="firstName"
+          label="First Name"
+          variant="outlined"
+          defaultValue={firstName}
+        />
+        <TextField
+          id="LastNameInput"
+          name="lastName"
+          label="Last Name"
+          variant="outlined"
+          defaultValue={lastName}
+        />
+        <TextField
+          id="EmailInput"
+          name="email"
+          label="Email"
+          variant="outlined"
+          defaultValue={email}
+        />
+        <TextField
+          id="PasswordInput"
+          name="password"
+          label="Password"
+          variant="outlined"
+        />
+      </div>
 
       <div>Here we go creating users.</div>
     </div>

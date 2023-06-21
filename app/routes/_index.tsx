@@ -1,7 +1,9 @@
 import React from 'react';
 import type { V2_MetaFunction } from '@remix-run/node';
+import { Outlet } from '@remix-run/react';
+
 import StyleBaseline from '~/common/components/StyleBaseline';
-import UserRoutes from '~/user/routes';
+// import UserRoutes from '~/user/routes';
 
 export const meta: V2_MetaFunction = () => [
   { title: 'New Remix App' },
@@ -16,7 +18,8 @@ export default function Index() {
     <>
       <StyleBaseline />
       {/* TODO: i want to be able to route directly like this and keep users in its own domain */}
-      <UserRoutes />
+      {/* <UserRoutes /> */}
+      <Outlet />
     </>
   );
 }

@@ -10,7 +10,11 @@ import type { AppLoadContext, EntryContext } from '@remix-run/node';
 import { Response } from '@remix-run/node';
 import { RemixServer } from '@remix-run/react';
 import isbot from 'isbot';
-import { renderToPipeableStream } from 'react-dom/server';
+import { renderToPipeableStream, renderToString } from 'react-dom/server';
+import { JssProvider, SheetsRegistry, createGenerateId } from 'react-jss';
+import createEmotionCache from './createEmotionCache';
+import createEmotionServer from '@emotion/server/create-instance';
+import { CacheProvider } from '@emotion/react';
 
 const ABORT_DELAY = 5_000;
 
@@ -93,12 +97,34 @@ function handleBrowserRequest(
 ) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
+
+    // TSS/JSS setup for SSR
+    const sheets = new SheetsRegistry();
+    const generateId = createGenerateId();
+
+    // emotion cache for SSR
+    const cache = createEmotionCache();
+    const { extractCriticalToChunks } = createEmotionServer(cache); 
+
+
+
+    function MuiRemixServer() {
+      return (
+        <CacheProvider value={cache}>
+          <JssProvider registry={sheets} generateId={generateId}>
+            <RemixServer
+              context={remixContext}
+              url={request.url}
+              abortDelay={ABORT_DELAY}
+            />
+          </JssProvider>
+        </CacheProvider>
+      )
+    }
+    
+
     const { pipe, abort } = renderToPipeableStream(
-      <RemixServer
-        context={remixContext}
-        url={request.url}
-        abortDelay={ABORT_DELAY}
-      />,
+      <MuiRemixServer />,
       {
         onShellReady() {
           shellRendered = true;
