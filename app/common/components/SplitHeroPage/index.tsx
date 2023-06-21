@@ -1,8 +1,10 @@
 import React from 'react';
 import type { ReactNode } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import BrandHeader from '../BrandHeader';
 import PageFooter from '../PageFooter';
 import useStyles from './styles';
+
 
 type SplitHeroPageProps = {
   title?: string;
@@ -16,6 +18,9 @@ type SplitHeroPageProps = {
 function SplitHeroPage({ title, children, hero }: SplitHeroPageProps) {
   const classes = useStyles();
 
+  // TODO: use breakpoints from MUI theme.breakpoints.up('md') 
+  const md = useMediaQuery('(min-width:1024px)');
+
   return (
     <div className={classes.root}>
       <main className={classes.content}>
@@ -26,7 +31,10 @@ function SplitHeroPage({ title, children, hero }: SplitHeroPageProps) {
 
         <PageFooter />
       </main>
-      <aside className={classes.hero}>{hero}</aside>
+      
+      {md && (
+        <aside className={classes.hero}>{hero}</aside>
+      )}
     </div>
   );
 }
