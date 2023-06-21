@@ -7,7 +7,7 @@ import AuthIcon from '~/common/components/AuthIcon';
 function Auth() {
   return (
     <Document>
-      <SplitHeroPage hero={<AuthIcon />}>
+      <SplitHeroPage title="Education.io" hero={<AuthIcon />}>
         <Outlet />
       </SplitHeroPage>
     </Document>

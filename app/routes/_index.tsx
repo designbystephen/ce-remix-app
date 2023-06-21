@@ -17,8 +17,6 @@ export default function Index() {
   return (
     <>
       <StyleBaseline />
-      {/* TODO: i want to be able to route directly like this and keep users in its own domain */}
-      {/* <UserRoutes /> */}
       <Outlet />
     </>
   );

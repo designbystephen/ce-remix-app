@@ -1,8 +1,9 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 import type { UseFormRegister } from 'react-hook-form';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import type { UserInput } from '../CreateUserContainer';
 import useStyles from './styles';
 
@@ -12,7 +13,7 @@ type CreateUserProps = {
   lastName?: string;
   email?: string;
   onSubmit?: () => void;
-  register: UseFormRegister<UserInput>;
+  register?: UseFormRegister<UserInput> | (() => void);
   hasErrors?: boolean;
   // fields: Record<string, RegisterOptions<UserInput>>;
 };
@@ -30,16 +31,24 @@ function CreateUser({
   lastName,
   email,
   onSubmit = () => {},
-  register,
+  register = () => {},
   hasErrors = false,
 }: CreateUserProps) {
   const classes = useStyles();
 
   return (
     <form onSubmit={onSubmit}>
-      <Box maxWidth={500} margin="auto">
-        <h1>Welcome</h1>
-        <h3>Create a New User</h3>
+      <div className={classes.root}>
+        <Typography variant="h2" component="h2">
+          Always nice to see a new face!
+        </Typography>
+
+        <Box my={2} color="#777">
+          <Typography component="h1" variant="h6" color="inherit">
+            Please enter your details below to create an account with
+            Education.io
+          </Typography>
+        </Box>
 
         <div className={classes.inputs}>
           <TextField
@@ -76,7 +85,7 @@ function CreateUser({
           />
         </div>
 
-        <Box marginTop="24px">
+        <div className={classes.c2a}>
           <Button
             variant="contained"
             fullWidth
@@ -86,8 +95,8 @@ function CreateUser({
           >
             Sign Up
           </Button>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </form>
   );
 }

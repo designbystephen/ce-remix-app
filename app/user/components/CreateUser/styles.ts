@@ -1,7 +1,10 @@
 import { createUseStyles } from 'react-jss';
 
 export default createUseStyles({
-  root: {},
+  root: {
+    margin: 'auto',
+    maxWidth: '500px',
+  },
 
   inputs: {
     display: 'flex',
@@ -16,5 +19,7 @@ export default createUseStyles({
     },
   },
 
-  c2a: {},
+  c2a: {
+    marginTop: '24px',
+  },
 });

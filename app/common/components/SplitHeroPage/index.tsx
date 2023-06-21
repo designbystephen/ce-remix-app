@@ -19,7 +19,8 @@ function SplitHeroPage({ title, children, hero }: SplitHeroPageProps) {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        {Boolean(title) && <BrandHeader title={title!} />}
+        {/* Use title in header if provided otherwise we need an empty element to 'space-between' */}
+        {title ? <BrandHeader title={title!} /> : <div />}
 
         <div className={classes.innerContent}>{children}</div>
 

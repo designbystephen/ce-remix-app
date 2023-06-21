@@ -1,6 +1,4 @@
 import React from 'react';
-// import PersonPinTwoToneIcon from '@mui/icons-material/PersonPinTwoTone';
-// import LockOpenSharpIcon from '@mui/icons-material/LockOpenSharp';
 import SchoolSharpIcon from '@mui/icons-material/SchoolSharp';
 import useStyles from './styles';
 

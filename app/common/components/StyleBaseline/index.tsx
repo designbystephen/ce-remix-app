@@ -27,6 +27,7 @@ const useStyles = createUseStyles({
  * </App>
  */
 function StyleBaseline() {
+  // import our base styles here
   useStyles();
 
   return (
