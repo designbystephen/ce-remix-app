@@ -3,14 +3,13 @@ import { createUseStyles } from 'react-jss';
 export default createUseStyles({
   root: {
     display: 'flex',
-    justifyContent: 'stretch',
-    height: '100%',
+    alignItems: 'stretch',
+    minHeight: '100%',
   },
 
   content: {
     // TODO: vertical alignment
     display: 'flex',
-    // alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: '#fff',
@@ -21,6 +20,7 @@ export default createUseStyles({
 
   hero: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#dfe6e9',
