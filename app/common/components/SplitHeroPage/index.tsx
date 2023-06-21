@@ -5,7 +5,7 @@ import PageFooter from '../PageFooter';
 import useStyles from './styles';
 
 type SplitHeroPageProps = {
-  title: string;
+  title?: string;
   children: ReactNode;
   hero: ReactNode;
 };
@@ -19,7 +19,7 @@ function SplitHeroPage({ title, children, hero }: SplitHeroPageProps) {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        <BrandHeader title={title} />
+        {Boolean(title) && <BrandHeader title={title!} />}
 
         <div className={classes.innerContent}>{children}</div>
 
