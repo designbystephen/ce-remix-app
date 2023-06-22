@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import type { Document } from 'mongoose';
 
 /**
@@ -43,7 +43,8 @@ export const UserSchema = new Schema<UserDocument>(
 );
 
 /**
- * User model
- * Used to save data & interact with mongo
+ * Used to save data & interact with mongodb
+ * - need to export with existing model consideration to prevent overwriting the model
  */
-export const UserModel = model<UserDocument>('users', UserSchema);
+export const UserModel =
+  mongoose.models.user || model<UserDocument>('user', UserSchema);

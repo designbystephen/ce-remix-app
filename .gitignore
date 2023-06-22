@@ -139,3 +139,6 @@ build
 
 # remix app builds
 public/build
+
+# remix has limited .env
+.env

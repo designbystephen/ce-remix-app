@@ -1,21 +1,26 @@
 import type { MongoMemoryServer } from 'mongodb-memory-server';
 import { UserSchema, UserModel } from '.';
 import type { User } from '.';
-import mdb from '../../../test/helpers/memoryDb';
+import db from '../../utils/db';
 
-let db: { connect: any; clear: any; close: any; mongod?: MongoMemoryServer };
+let testDb: {
+  connect: any;
+  clear: any;
+  close: any;
+  mongod?: MongoMemoryServer;
+};
 
 beforeAll(async () => {
-  db = await mdb();
-  await db.connect();
+  testDb = await db();
+  await testDb.connect();
 });
 
 afterEach(async () => {
-  db.clear();
+  await testDb.clear();
 });
 
 afterAll(async () => {
-  await db.close();
+  await testDb.close();
 });
 
 describe('User', () => {
