@@ -1,6 +1,6 @@
 import type { MongoMemoryServer } from 'mongodb-memory-server';
 import { UserSchema, UserModel } from '.';
-import type { UserProps } from '.';
+import type { User } from '.';
 import mdb from '../../../test/helpers/memoryDb';
 
 let db: { connect: any; clear: any; close: any; mongod?: MongoMemoryServer };
@@ -31,7 +31,7 @@ describe('User', () => {
     });
 
     it('should create', async () => {
-      const mockUser: UserProps = {
+      const mockUser: User = {
         firstName: 'Stephen',
         lastName: 'Roth',
         email: 'stephen@email.com',

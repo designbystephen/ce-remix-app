@@ -9,7 +9,7 @@ export default createUseStyles({
   inputs: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '24px',
+    rowGap: '16px',
     justifyContent: 'space-around',
     paddingTop: '24px',
     paddingBottom: '24px',

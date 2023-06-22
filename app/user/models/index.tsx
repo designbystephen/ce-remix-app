@@ -4,9 +4,8 @@ import type { Document } from 'mongoose';
 /**
  * Base user properties
  * - Properties that exist in a User document
- * - These are usually provided by user input
  */
-export type UserProps = {
+export type User = {
   firstName: string;
   lastName: string;
   email: string;
@@ -14,10 +13,17 @@ export type UserProps = {
 };
 
 /**
+ * Input for creating a user
+ */
+export type UserInput = User & {
+  // differences between input and available user props goes here
+};
+
+/**
  * User document
  * - Combination of User properties and mongoose meta Document props (_id, updatedAt, createdAt)
  */
-export interface UserDocument extends Document<string>, UserProps {
+export interface UserDocument extends Document<string>, User {
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import type { UseFormRegister } from 'react-hook-form';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import type { UserInput } from '../CreateUserContainer';
+import type { UserInput } from '~/user/models';
 import useStyles from './styles';
 
 type CreateUserProps = {
@@ -15,7 +15,7 @@ type CreateUserProps = {
   onSubmit?: () => void;
   register?: UseFormRegister<UserInput> | (() => void);
   hasErrors?: boolean;
-  // fields: Record<string, RegisterOptions<UserInput>>;
+  errors?: FieldErrors<UserInput>;
 };
 
 /**
@@ -32,6 +32,7 @@ function CreateUser({
   email,
   onSubmit = () => {},
   register = () => {},
+  errors = {},
   hasErrors = false,
 }: CreateUserProps) {
   const classes = useStyles();
@@ -57,6 +58,8 @@ function CreateUser({
             variant="outlined"
             defaultValue={firstName}
             fullWidth
+            error={Boolean(errors?.firstName)}
+            helperText={errors?.firstName?.message}
             {...register('firstName')}
           />
           <TextField
@@ -65,6 +68,8 @@ function CreateUser({
             variant="outlined"
             defaultValue={lastName}
             fullWidth
+            error={Boolean(errors?.lastName)}
+            helperText={errors?.lastName?.message}
             {...register('lastName')}
           />
           <TextField
@@ -73,6 +78,8 @@ function CreateUser({
             variant="outlined"
             defaultValue={email}
             fullWidth
+            error={Boolean(errors?.email)}
+            helperText={errors?.email?.message}
             {...register('email')}
           />
           <TextField
@@ -81,6 +88,8 @@ function CreateUser({
             label="Password"
             variant="outlined"
             fullWidth
+            error={Boolean(errors?.password)}
+            helperText={errors?.password?.message}
             {...register('password')}
           />
         </div>
