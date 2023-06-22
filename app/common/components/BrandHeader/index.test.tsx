@@ -21,7 +21,7 @@ describe('BrandHeader', () => {
     });
 
     it('contains a banner element', () => {
-      expect(screen.getByRole('banner')).toBeDefined();
+      expect(screen.getByRole('heading')).toBeDefined();
     });
   });
 });

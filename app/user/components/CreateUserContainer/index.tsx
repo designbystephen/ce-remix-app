@@ -12,6 +12,7 @@ export type UserInput = {
 
 /**
  * Business logic for creating a user
+ * @todo create a schema and a model with mongoose
  */
 function CreateUserContainer() {
   const {
