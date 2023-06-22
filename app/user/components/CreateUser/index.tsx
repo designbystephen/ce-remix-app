@@ -16,6 +16,7 @@ type CreateUserProps = {
   register?: UseFormRegister<UserInput> | (() => void);
   hasErrors?: boolean;
   errors?: FieldErrors<UserInput>;
+  disabled?: boolean;
 };
 
 /**
@@ -34,11 +35,12 @@ function CreateUser({
   register = () => {},
   errors = {},
   hasErrors = false,
+  disabled = false,
 }: CreateUserProps) {
   const classes = useStyles();
 
   return (
-    <form onSubmit={onSubmit}>
+    <form method="POST" onSubmit={onSubmit}>
       <div className={classes.root}>
         <Typography variant="h2" component="h2">
           Always nice to see a new face!
@@ -101,6 +103,7 @@ function CreateUser({
             size="large"
             onClick={onSubmit}
             color={hasErrors ? 'error' : 'primary'}
+            disabled={disabled}
           >
             Sign Up
           </Button>

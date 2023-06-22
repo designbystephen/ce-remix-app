@@ -40,7 +40,7 @@ startTransition(() => {
     document,
     <StrictMode>
       <ClientCacheProvider>
-          <RemixBrowser />
+        <RemixBrowser />
       </ClientCacheProvider>
     </StrictMode>
   )

@@ -1,9 +1,10 @@
 import React from 'react';
+import { redirect } from '@remix-run/node';
 import type { V2_MetaFunction } from '@remix-run/node';
 import { Outlet } from '@remix-run/react';
 
-import StyleBaseline from '~/common/components/StyleBaseline';
-// import UserRoutes from '~/user/routes';
+// we are just redirecting to the evaluation for now
+export const loader = () => redirect('/signup')
 
 export const meta: V2_MetaFunction = () => [
   { title: 'New Remix App' },
@@ -15,9 +16,7 @@ export const meta: V2_MetaFunction = () => [
  */
 export default function Index() {
   return (
-    <>
-      <StyleBaseline />
-      <Outlet />
-    </>
+
+    <Outlet />
   );
 }
