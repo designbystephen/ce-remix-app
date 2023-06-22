@@ -46,9 +46,7 @@ function CreateUser({
           Always nice to see a new face!
         </Typography>
 
-        <Subheader 
-          text="Please enter your details below to create an account with Education.io"
-        />
+        <Subheader text="Please enter your details below to create an account with Education.io" />
 
         <div className={classes.inputs}>
           <TextField

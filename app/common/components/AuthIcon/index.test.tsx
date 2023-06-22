@@ -12,16 +12,12 @@ describe('AuthIcon', () => {
   });
 
   it('renders', () => {
-    render(
-      <AuthIcon />
-    );
+    render(<AuthIcon />);
   });
 
   describe('when rendering', () => {
     beforeEach(() => {
-      render(
-        <AuthIcon />
-      )
+      render(<AuthIcon />);
     });
 
     it('contains icon', () => {

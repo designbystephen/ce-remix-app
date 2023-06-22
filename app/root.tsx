@@ -9,11 +9,10 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  
   return (
     <>
       <StyleBaseline />
       <Outlet />
     </>
-  )
+  );
 }

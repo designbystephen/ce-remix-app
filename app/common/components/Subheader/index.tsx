@@ -3,8 +3,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 type SubheaderProps = {
-  text: string,
-}
+  text: string;
+};
 
 /**
  * Subheader component
@@ -17,7 +17,7 @@ function Subheader({ text }: SubheaderProps) {
         {text}
       </Typography>
     </Box>
-  )
+  );
 }
 
 export default React.memo(Subheader);

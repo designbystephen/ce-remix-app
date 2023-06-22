@@ -12,16 +12,12 @@ describe('Subheader', () => {
   });
 
   it('renders', () => {
-    render(
-      <Subheader text="hey there" />
-    );
+    render(<Subheader text="hey there" />);
   });
 
   describe('when rendering', () => {
     beforeEach(() => {
-      render(
-        <Subheader text="hey there" />
-      )
+      render(<Subheader text="hey there" />);
     });
 
     it('contains content', () => {

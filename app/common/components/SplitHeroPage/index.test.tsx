@@ -17,18 +17,17 @@ describe('SplitHeroPage', () => {
 
   it('renders', () => {
     render(
-      <SplitHeroPage hero={<img src="" alt="hero" />}>
-        hey there
-      </SplitHeroPage>
+      <SplitHeroPage hero={<img src="" alt="hero" />}>hey there</SplitHeroPage>
     );
   });
 
   describe('when rendering', () => {
     beforeEach(() => {
       render(
-      <SplitHeroPage hero={<img src="" alt="hero" />}>
-        hey there
-      </SplitHeroPage>);
+        <SplitHeroPage hero={<img src="" alt="hero" />}>
+          hey there
+        </SplitHeroPage>
+      );
     });
 
     it('contains content', () => {

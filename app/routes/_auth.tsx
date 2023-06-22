@@ -21,7 +21,7 @@ const useStyles = createUseStyles({
  */
 function Auth() {
   useStyles();
-  
+
   return (
     <Document>
       <SplitHeroPage title="Education.io" hero={<AuthIcon />}>

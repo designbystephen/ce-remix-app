@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
-import { useSubmit } from '@remix-run/react'
+import { useSubmit } from '@remix-run/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CreateUser from '~/user/components/CreateUser';
 import type { UserInput } from '~/user/models';
@@ -33,8 +33,8 @@ function CreateUserContainer() {
    */
   const onSubmit: SubmitHandler<UserInput> = (data) => {
     // calling the useSubmit hook so we can trigger the route action
-    handleAction(data, { method: 'POST'});
-  }
+    handleAction(data, { method: 'POST' });
+  };
 
   /**
    * Callback for submitting invalid data
