@@ -1,7 +1,11 @@
 import React from 'react';
 import CreateUserContainer from '~/user/components/CreateUserContainer';
 import { redirect } from '@remix-run/node';
-import type { ActionFunction, HandleErrorFunction } from '@remix-run/node';
+import type {
+  ActionFunction,
+  HandleErrorFunction,
+  V2_MetaFunction,
+} from '@remix-run/node';
 import { Link } from '@remix-run/react';
 import schema from '~/user/utils/form';
 import { UserModel, type UserInput } from '~/user/models';
@@ -9,8 +13,18 @@ import db from '~/utils/db';
 
 /**
  * Save user to database
+ * @todo could move this to a module for testing purposes but we are already testing this path elsewhere
  */
 async function SaveUser(input: UserInput) {
+  /**
+   * IMPORTANT:
+   * I would never do this in production as we are storing plaintext passswords and PII about this user.
+   *
+   * I would also recommend that trusted and well vetted OAuth solutions be used in place of creating users this way.
+   * My personal choice would be to setup Cognito in AWS and then create our own User entity.
+   * This way we can utilize an eventbus to send confirmation emails, and create the cognito users with the provided information
+   */
+
   try {
     const { connect } = await db();
     connect();
@@ -20,6 +34,7 @@ async function SaveUser(input: UserInput) {
     await doc.save();
 
     console.table(doc);
+
     return doc;
   } catch (ex) {
     console.error(ex);
@@ -35,6 +50,13 @@ async function SaveUser(input: UserInput) {
 function SignUp() {
   return <CreateUserContainer />;
 }
+
+/**
+ * Set meta for this route
+ */
+export const meta: V2_MetaFunction = () => [
+  { name: 'description', content: 'Signup for access to education.io!' },
+];
 
 /**
  * Remix action to handle form post
@@ -55,15 +77,17 @@ export const action: ActionFunction = async ({ request }) => {
   console.table(data);
 
   // attempt to save the use to the db
-  await SaveUser(data);
+  const user = await SaveUser(data);
 
   // redirect to success page
-  return redirect('/success');
+  // eslint-disable-next-line no-underscore-dangle
+  return redirect(`/success?user=${user._id}`);
 };
 
 /**
  * Error boundary that will render if there are any errors detected in
  * @todo should add realistic boundary logic here
+ * @todo move the current error boundary to common component
  *
  * @example
  * // you can cause this error boundary to trip if you throw an error during the request, like in the action

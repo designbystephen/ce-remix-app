@@ -106,8 +106,15 @@ function handleBrowserRequest(
     const cache = createEmotionCache();
     const { extractCriticalToChunks } = createEmotionServer(cache); 
 
+    /**
+     * NOTE: Despite my best efforts I was not able to get initial flashing to go away due to styles not rendering in the server request
+     */
 
-
+    /**
+     * Remix server with style providers
+     * @todo investigate issues with two style providers as cause for flashing
+     * @todo find a more recent example on how to do this via renderToPipeableStream
+     */
     function MuiRemixServer() {
       return (
         <CacheProvider value={cache}>

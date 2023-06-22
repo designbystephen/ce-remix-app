@@ -7,8 +7,7 @@ import { Outlet } from '@remix-run/react';
 export const loader = () => redirect('/signup');
 
 export const meta: V2_MetaFunction = () => [
-  { title: 'New Remix App' },
-  { name: 'description', content: 'Welcome to Remix!' },
+  { name: 'description', content: 'Welcome to education.io' },
 ];
 
 /**

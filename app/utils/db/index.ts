@@ -31,7 +31,10 @@ const memoryDb = async () => {
     connect: async () => {
       const uri = mongod.getUri();
 
-      await mongoose.connect(uri);
+      // prevent connecting again
+      if (!mongoose.connection.readyState) {
+        await mongoose.connect(uri);
+      }
     },
 
     /** close memory db connection */
