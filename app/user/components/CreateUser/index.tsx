@@ -3,8 +3,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import type { UserInput } from '~/user/models';
+import Subheader from '~/common/components/Subheader';
 import useStyles from './styles';
 
 type CreateUserProps = {
@@ -46,12 +46,9 @@ function CreateUser({
           Always nice to see a new face!
         </Typography>
 
-        <Box my={2} color="#777">
-          <Typography component="h1" variant="h6" color="inherit">
-            Please enter your details below to create an account with
-            Education.io
-          </Typography>
-        </Box>
+        <Subheader 
+          text="Please enter your details below to create an account with Education.io"
+        />
 
         <div className={classes.inputs}>
           <TextField

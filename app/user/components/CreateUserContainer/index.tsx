@@ -7,8 +7,6 @@ import CreateUser from '~/user/components/CreateUser';
 import type { UserInput } from '~/user/models';
 import schema from '~/user/utils/form';
 
-
-
 /**
  * Business logic for creating a user
  */
@@ -22,7 +20,7 @@ function CreateUserContainer() {
     resolver: yupResolver(schema),
   });
 
-  const action = useSubmit();
+  const handleAction = useSubmit();
 
   // must have user interaction AND be invalid before we show errors
   const hasErrors = isSubmitted && !isValid;
@@ -34,8 +32,8 @@ function CreateUserContainer() {
    * Callback for submitting data, called only if form is valid
    */
   const onSubmit: SubmitHandler<UserInput> = (data) => {
-    action(data, { method: 'POST'});
-    console.log(data)
+    // calling the useSubmit hook so we can trigger the route action
+    handleAction(data, { method: 'POST'});
   }
 
   /**
