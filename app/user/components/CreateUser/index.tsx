@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Typography from '@mui/material/Typography';
 import type { UserInput } from '~/user/models';
-import Subheader from '~/common/components/Subheader';
+import Subheader from '../../../common/components/Subheader';
 import useStyles from './styles';
 
 type CreateUserProps = {
